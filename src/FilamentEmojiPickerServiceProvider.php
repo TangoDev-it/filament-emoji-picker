@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace TangoDevIt\FilamentEmojiPicker;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
@@ -13,14 +13,14 @@ use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
-use VendorName\Skeleton\Testing\TestsSkeleton;
+use TangoDevIt\FilamentEmojiPicker\Commands\FilamentEmojiPickerCommand;
+use TangoDevIt\FilamentEmojiPicker\Testing\TestsFilamentEmojiPicker;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'skeleton';
+    public static string $name = 'filament-emoji-picker';
 
-    public static string $viewNamespace = 'skeleton';
+    public static string $viewNamespace = 'filament-emoji-picker';
 
     public function configurePackage(Package $package): void
     {
@@ -36,7 +36,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
                     ->publishConfigFile()
                     ->publishMigrations()
                     ->askToRunMigrations()
-                    ->askToStarRepoOnGitHub(':vendor_slug/:package_slug');
+                    ->askToStarRepoOnGitHub('tangodev-it/filament-emoji-picker');
             });
 
         $configFileName = $package->shortName();
@@ -82,18 +82,18 @@ class SkeletonServiceProvider extends PackageServiceProvider
         if (app()->runningInConsole()) {
             foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
                 $this->publishes([
-                    $file->getRealPath() => base_path("stubs/skeleton/{$file->getFilename()}"),
-                ], 'skeleton-stubs');
+                    $file->getRealPath() => base_path("stubs/filament-emoji-picker/{$file->getFilename()}"),
+                ], 'filament-emoji-picker-stubs');
             }
         }
 
         // Testing
-        Testable::mixin(new TestsSkeleton());
+        Testable::mixin(new TestsFilamentEmojiPicker());
     }
 
     protected function getAssetPackageName(): ?string
     {
-        return ':vendor_slug/:package_slug';
+        return 'tangodev-it/filament-emoji-picker';
     }
 
     /**
@@ -102,9 +102,9 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('skeleton', __DIR__ . '/../resources/dist/components/skeleton.js'),
-            Css::make('skeleton-styles', __DIR__ . '/../resources/dist/skeleton.css'),
-            Js::make('skeleton-scripts', __DIR__ . '/../resources/dist/skeleton.js'),
+            // AlpineComponent::make('filament-emoji-picker', __DIR__ . '/../resources/dist/components/filament-emoji-picker.js'),
+            Css::make('filament-emoji-picker-styles', __DIR__ . '/../resources/dist/filament-emoji-picker.css'),
+            Js::make('filament-emoji-picker-scripts', __DIR__ . '/../resources/dist/filament-emoji-picker.js'),
         ];
     }
 
@@ -114,7 +114,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getCommands(): array
     {
         return [
-            SkeletonCommand::class,
+            FilamentEmojiPickerCommand::class,
         ];
     }
 
@@ -148,7 +148,7 @@ class SkeletonServiceProvider extends PackageServiceProvider
     protected function getMigrations(): array
     {
         return [
-            'create_skeleton_table',
+            'create_filament-emoji-picker_table',
         ];
     }
 }
