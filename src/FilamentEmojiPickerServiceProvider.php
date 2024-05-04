@@ -2,8 +2,6 @@
 
 namespace TangoDevIt\FilamentEmojiPicker;
 
-use Filament\Support\Facades\FilamentView;
-use Illuminate\Contracts\View\View;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
@@ -50,11 +48,6 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
             $this->getScriptData(),
             $this->getAssetPackageName()
         );
-
-        FilamentView::registerRenderHook(
-            'panels::body.end',
-            fn (): View => view('filament-emoji-picker::emoji-picker'),
-        );
     }
 
     protected function getAssetPackageName(): ?string
@@ -68,7 +61,7 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            Js::make('filament-emoji-picker-scripts', __DIR__ . '/../resources/dist/filament-emoji-picker.js'),
+            Js::make('filament-emoji-picker-scripts', __DIR__ . '/../resources/dist/filament-emoji-picker.js')->module(true),
         ];
     }
 
