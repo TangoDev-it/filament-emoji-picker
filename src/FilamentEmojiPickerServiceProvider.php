@@ -2,19 +2,12 @@
 
 namespace TangoDevIt\FilamentEmojiPicker;
 
-use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
-use Filament\Support\Facades\FilamentIcon;
-use Illuminate\Filesystem\Filesystem;
-use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use TangoDevIt\FilamentEmojiPicker\Commands\FilamentEmojiPickerCommand;
-use TangoDevIt\FilamentEmojiPicker\Testing\TestsFilamentEmojiPicker;
 
 class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
 {
@@ -34,8 +27,6 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()
-                    ->publishMigrations()
-                    ->askToRunMigrations()
                     ->askToStarRepoOnGitHub('tangodev-it/filament-emoji-picker');
             });
 
@@ -74,18 +65,6 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
             $this->getScriptData(),
             $this->getAssetPackageName()
         );
-
-        // Icon Registration
-        FilamentIcon::register($this->getIcons());
-
-        // Handle Stubs
-        if (app()->runningInConsole()) {
-            foreach (app(Filesystem::class)->files(__DIR__ . '/../stubs/') as $file) {
-                $this->publishes([
-                    $file->getRealPath() => base_path("stubs/filament-emoji-picker/{$file->getFilename()}"),
-                ], 'filament-emoji-picker-stubs');
-            }
-        }
     }
 
     protected function getAssetPackageName(): ?string
@@ -99,8 +78,6 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            // AlpineComponent::make('filament-emoji-picker', __DIR__ . '/../resources/dist/components/filament-emoji-picker.js'),
-            Css::make('filament-emoji-picker-styles', __DIR__ . '/../resources/dist/filament-emoji-picker.css'),
             Js::make('filament-emoji-picker-scripts', __DIR__ . '/../resources/dist/filament-emoji-picker.js'),
         ];
     }
@@ -142,8 +119,6 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
      */
     protected function getMigrations(): array
     {
-        return [
-            'create_filament-emoji-picker_table',
-        ];
+        return [];
     }
 }
