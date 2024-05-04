@@ -2,6 +2,8 @@
 
 namespace TangoDevIt\FilamentEmojiPicker;
 
+use Filament\Support\Facades\FilamentView;
+use Illuminate\Contracts\View\View;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
@@ -23,26 +25,9 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
-            ->hasCommands($this->getCommands())
             ->hasInstallCommand(function (InstallCommand $command) {
-                $command
-                    ->publishConfigFile()
-                    ->askToStarRepoOnGitHub('tangodev-it/filament-emoji-picker');
+                $command->askToStarRepoOnGitHub('tangodev-it/filament-emoji-picker');
             });
-
-        $configFileName = $package->shortName();
-
-        if (file_exists($package->basePath("/../config/{$configFileName}.php"))) {
-            $package->hasConfigFile();
-        }
-
-        if (file_exists($package->basePath('/../database/migrations'))) {
-            $package->hasMigrations($this->getMigrations());
-        }
-
-        if (file_exists($package->basePath('/../resources/lang'))) {
-            $package->hasTranslations();
-        }
 
         if (file_exists($package->basePath('/../resources/views'))) {
             $package->hasViews(static::$viewNamespace);
@@ -65,6 +50,11 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
             $this->getScriptData(),
             $this->getAssetPackageName()
         );
+
+        FilamentView::registerRenderHook(
+            'panels::body.end',
+            fn (): View => view('filament-emoji-picker::emoji-picker'),
+        );
     }
 
     protected function getAssetPackageName(): ?string
@@ -83,41 +73,9 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
     }
 
     /**
-     * @return array<class-string>
-     */
-    protected function getCommands(): array
-    {
-        return [];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getIcons(): array
-    {
-        return [];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getRoutes(): array
-    {
-        return [];
-    }
-
-    /**
      * @return array<string, mixed>
      */
     protected function getScriptData(): array
-    {
-        return [];
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getMigrations(): array
     {
         return [];
     }
