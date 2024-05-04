@@ -86,9 +86,6 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
                 ], 'filament-emoji-picker-stubs');
             }
         }
-
-        // Testing
-        Testable::mixin(new TestsFilamentEmojiPicker());
     }
 
     protected function getAssetPackageName(): ?string
@@ -113,9 +110,7 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
      */
     protected function getCommands(): array
     {
-        return [
-            FilamentEmojiPickerCommand::class,
-        ];
+        return [];
     }
 
     /**
