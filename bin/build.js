@@ -18,8 +18,6 @@ const defaultOptions = {
         'process.env.NODE_ENV': isDev ? `'development'` : `'production'`,
     },
     bundle: true,
-    mainFields: ['module', 'main'],
-    platform: 'neutral',
     sourcemap: isDev ? 'inline' : false,
     sourcesContent: isDev,
     treeShaking: true,

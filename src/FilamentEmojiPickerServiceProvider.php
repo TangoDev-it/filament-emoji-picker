@@ -61,7 +61,7 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            Js::make('filament-emoji-picker-scripts', __DIR__ . '/../resources/dist/filament-emoji-picker.js')->module(true),
+            Js::make('filament-emoji-picker-scripts', __DIR__ . '/../resources/dist/filament-emoji-picker.js')->loadedOnRequest(),
         ];
     }
 
