@@ -23,13 +23,14 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package->name(static::$name)
+            ->hasViews(static::$viewNamespace)
+            ->hasConfigFile('emoji-picker')
             ->hasInstallCommand(function (InstallCommand $command) {
-                $command->askToStarRepoOnGitHub('tangodev-it/filament-emoji-picker');
+                // The install command can be run using: php artisan filament-emoji-picker:install
+                $command
+                    ->publishConfigFile()
+                    ->askToStarRepoOnGitHub('tangodev-it/filament-emoji-picker');
             });
-
-        if (file_exists($package->basePath('/../resources/views'))) {
-            $package->hasViews(static::$viewNamespace);
-        }
     }
 
     public function packageRegistered(): void
@@ -70,6 +71,12 @@ class FilamentEmojiPickerServiceProvider extends PackageServiceProvider
      */
     protected function getScriptData(): array
     {
-        return [];
+        return [
+            'emojiPicker' => [
+                'locale' => config('emoji-picker.locale'),
+                'i18n' => config('emoji-picker.i18n'),
+                'datasource' => config('emoji-picker.datasource'),
+            ]
+        ];
     }
 }
