@@ -1,7 +1,6 @@
 <img src="screenshots/splash.png">
-<br><br>
 
-# Filament emoji picker
+# Filament Emoji Picker
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/tangodev-it/filament-emoji-picker.svg?style=flat-square)](https://packagist.org/packages/tangodev-it/filament-emoji-picker)
 
