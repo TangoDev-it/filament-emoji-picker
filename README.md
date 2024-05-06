@@ -83,6 +83,23 @@ Result:
 
 TODO image
 
+### Action customization
+Like any other action, you can set the icon and the label (visible only on hint actions). 
+
+```php
+TextInput::make('title')
+    ->required()
+    ->maxLength(255)
+    ->hintAction(EmojiPickerAction::make('emoji-title')
+        ->icon('paint-brush')
+        ->label('Choose an emoji')
+    ),
+```
+
+TODO image
+
+By default the icon is `heroicon-o-face-smile` and the label is `Emoji`. The label is only visible in hint actions.
+
 ### Popup positioning
 You can change the position and the offset (in pixel) of the popup:
 
@@ -91,7 +108,7 @@ TextInput::make('title')
     ->required()
     ->maxLength(255)
     ->prefixAction(EmojiPickerAction::make('emoji-titolo')
-        ->popupPlacement('top-start')
+        ->popupPlacement('bottom-start')
         ->popupOffset([-7, 4])
     ),
 ```
