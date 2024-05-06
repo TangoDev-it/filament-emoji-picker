@@ -40,9 +40,15 @@ TextInput::make('title')
     ->suffixAction(EmojiPickerAction::make('emoji-title')),
 ```
 
-The result:
+<img src="screenshots/text_input_suffix_action.png" width="600">
 
-TODO image
+Click on the action to show the emoji picker:
+
+<img src="screenshots/text_input_suffix_action_open.png" width="600">
+
+Pick an emoji and it will be automatically appended to the field content:
+
+<img src="screenshots/text_input_suffix_action_open_picked.png" width="600">
 
 You can add the `EmojiPickerAction` also as a hint action:
 
@@ -53,9 +59,7 @@ TextInput::make('title')
     ->hintAction(EmojiPickerAction::make('emoji-title')),
 ```
 
-Result:
-
-TODO image
+<img src="screenshots/text_input_hint_action.png" width="600">
 
 Or as a prefix action:
 
@@ -66,9 +70,7 @@ TextInput::make('title')
     ->prefixAction(EmojiPickerAction::make('emoji-title')),
 ```
 
-Result:
-
-TODO image
+<img src="screenshots/text_input_prefix_action.png" width="600">
 
 You can attach the `EmojiPickerAction` also to a `Textarea` field:
 
@@ -79,9 +81,7 @@ Textarea::make('messagge')
     ->hintAction(EmojiPickerAction::make('emoji-messagge')),
 ```
 
-Result:
-
-TODO image
+<img src="screenshots/textarea_hint_action.png" width="600">
 
 ### Action customization
 Like any other action, you can set the icon and the label (visible only on hint actions). 
@@ -96,7 +96,7 @@ TextInput::make('title')
     ),
 ```
 
-TODO image
+<img src="screenshots/text_input_hint_action_custom.png" width="600">
 
 By default the icon is `heroicon-o-face-smile` and the label is `Emoji`. The label is only visible in hint actions.
 
@@ -113,7 +113,7 @@ TextInput::make('title')
     ),
 ```
 
-TODO image
+<img src="screenshots/text_input_prefix_action_open.png" width="600">
 
 Possible placements:
  - `auto`
@@ -134,7 +134,6 @@ Possible placements:
 
 The default placement is `bottom-end` and the default offset is `[7,4]`.
 
-
 ## Internationalization
 You can change the picker language by publishing the config file (see the "Installation" section) and editing it:
 
@@ -144,9 +143,9 @@ Here's an example for the italian translation:
 <?php
 // config for TangoDevIt/FilamentEmojiPicker
 return [
-    'locale' => 'en',
-    'i18n' => 'https://cdn.jsdelivr.net/npm/emoji-picker-element@1.21.3/i18n/en.js',
-    'datasource' => 'https://cdn.jsdelivr.net/npm/emoji-picker-element-data@1.6.0/en/emojibase/data.json'
+    'locale' => 'it',
+    'i18n' => 'https://cdn.jsdelivr.net/npm/emoji-picker-element@1.21.3/i18n/it.js',
+    'datasource' => 'https://cdn.jsdelivr.net/npm/emoji-picker-element-data@1.6.0/it/cldr-native/data.json'
 ];
 ```
 
@@ -156,7 +155,8 @@ For further informations please refer to the [underlying javascript library docu
 
 Out of the box the picker supports light and dark mode:
 
-TODO image
+<img src="screenshots/text_input_suffix_action_open.png" width="600">
+<img src="screenshots/text_input_suffix_action_open_dark.png" width="600">
 
 To further customize the style of the picker please refer to the [underlying javascript library documentation](https://github.com/nolanlawson/emoji-picker-element/?tab=readme-ov-file#css-variables).
 
