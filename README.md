@@ -29,7 +29,9 @@ Publish the config file if you want to change the default language of the picker
 
 ## Usage
 
-Just add the `EmojiPickerAction` to your existing input fields and you're ready to go!
+Just add the `EmojiPickerAction` to your existing input fields and you're ready to go 🚀.
+
+Never heard about form actions? [Read more](https://filamentphp.com/docs/3.x/forms/actions).
 
 ```php
 use TangoDevIt\FilamentEmojiPicker\EmojiPickerAction;

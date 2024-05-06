@@ -1,6 +1,6 @@
 {
     "name": "tangodev-it/filament-emoji-picker",
-    "description": "This is my package filament-emoji-picker",
+    "description": "Add an emoji picker to your Filament input fields",
     "keywords": [
         "TangoDev-it",
         "laravel",
