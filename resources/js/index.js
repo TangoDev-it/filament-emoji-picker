@@ -7,15 +7,14 @@ function isDarkTheme() {
 
 async function onEmojiPickerToggle(event) {
     const element = event.detail.element;
-    const data = event.detail.data;
     const button = element.querySelector('.emoji-picker-button');
     const popup = element.querySelector('.emoji-picker-popup');
+    const existingPicker = popup.querySelector('emoji-picker');
 
-    if(data.initialized) {
+    if(existingPicker != null) {
         // If the popup was already initialized, we only toggle the light/dark class based on the current theme
-        const picker = popup.querySelector('emoji-picker');
-        picker.classList.remove('dark', 'light');
-        picker.classList.add(isDarkTheme() ? 'dark' : 'light');
+        existingPicker.classList.remove('dark', 'light');
+        existingPicker.classList.add(isDarkTheme() ? 'dark' : 'light');
         return;
     };
 
@@ -45,8 +44,6 @@ async function onEmojiPickerToggle(event) {
             },
         ],
     });
-
-    data.initialized = true;
 }
 
 document.addEventListener('emoji-picker-toggle', onEmojiPickerToggle);

@@ -4,7 +4,6 @@
     x-data="{ 
         state: $wire.$entangle('{{ $getComponent()->getStatePath() }}'), 
         open: false, 
-        initialized : false, 
         toggle() { this.open = !this.open },
     }">
     @include ($childView)
