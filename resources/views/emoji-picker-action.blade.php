@@ -2,7 +2,7 @@
     x-load-js="[@js(\Filament\Support\Facades\FilamentAsset::getScriptSrc('filament-emoji-picker-scripts', package: 'tangodev-it/filament-emoji-picker'))]"
     x-init="$watch('open', value => $dispatch('emoji-picker-toggle', { element: $el, data: $data }))"
     x-data="{ 
-        state: $wire.$entangle('{{ $getComponent()->getStatePath() }}'), 
+        state: $wire.$entangle('{{ $statePath }}'), 
         open: false, 
         toggle() { this.open = !this.open },
     }">
