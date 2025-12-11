@@ -3,7 +3,7 @@
 namespace TangoDevIt\FilamentEmojiPicker;
 
 use Closure;
-use Filament\Forms\Components\Actions\Action;
+use Filament\Actions\Action;
 
 class EmojiPickerAction extends Action
 {
@@ -37,12 +37,10 @@ class EmojiPickerAction extends Action
         parent::setUp();
         $this->label('Emoji');
         $this->icon('heroicon-o-face-smile');
-        $this->extraAttributes(function() {
-            return [
-                'class' => 'emoji-picker-button',
-                'x-on:click' => 'toggle',
-            ];
-        });
+        $this->alpineClickHandler('toggle');
+        $this->extraAttributes([
+            'class' => 'emoji-picker-button',
+        ]);
     }
 
     public function isLivewireClickHandlerEnabled(): bool
@@ -50,15 +48,17 @@ class EmojiPickerAction extends Action
         return false;
     }
 
-    public function getView(): string
+    public function toHtml(): string
     {
         $popupOffset = $this->getPopupOffset();
-        $this->viewData([
-            'childView' => parent::getView(),
+        $viewData = [
+            'childView' => parent::toHtml(),
+            'popupPlacement' => $this->getPopupPlacement(),
             'popupOffsetX' => $popupOffset[0],
             'popupOffsetY' => $popupOffset[1],
-        ]);
-        return 'filament-emoji-picker::emoji-picker-action';
+            'statePath' => $this->getSchemaComponent()->getStatePath()
+        ];
+        return view('filament-emoji-picker::emoji-picker-action', $viewData)->render();
     }
     
 }
