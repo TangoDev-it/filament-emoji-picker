@@ -5,6 +5,13 @@
 
 Add an emoji picker to your Filament input fields.
 
+## Version Compatibility
+
+| Filament | Filament Emoji Picker |
+| --- | --- |
+| 3.x | 1.x |
+| 4.x | 2.x |
+
 ## Installation
 
 You can install the package via composer:
