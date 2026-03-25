@@ -11,6 +11,9 @@ Add an emoji picker to your Filament input fields.
 | --- | --- |
 | 3.x | 1.x |
 | 4.x | 2.x |
+| 5.x | 3.x |
+
+Use `composer require tangodev-it/filament-emoji-picker:^3.0` on Filament 5, or `^2.0` if you are still on Filament 4.
 
 ## Installation
 
@@ -38,7 +41,7 @@ Publish the config file if you want to change the default language of the picker
 
 Just add the `EmojiPickerAction` to your existing input fields and you're ready to go 🚀.
 
-Never heard about form actions? [Read more](https://filamentphp.com/docs/3.x/forms/actions).
+Never heard about forms? [Read more](https://filamentphp.com/docs/5.x/forms/overview).
 
 ```php
 use TangoDevIt\FilamentEmojiPicker\EmojiPickerAction;
@@ -84,10 +87,10 @@ TextInput::make('title')
 You can attach the `EmojiPickerAction` also to a `Textarea` field:
 
 ```php
-Textarea::make('messagge')
+Textarea::make('message')
     ->required()
     ->maxLength(255)
-    ->hintAction(EmojiPickerAction::make('emoji-messagge')),
+    ->hintAction(EmojiPickerAction::make('emoji-message')),
 ```
 
 <img src="https://github.com/TangoDev-it/filament-emoji-picker/raw/main/screenshots/textarea_hint_action.png" width="600">
@@ -158,7 +161,7 @@ return [
 ];
 ```
 
-For further informations please refer to the [underlying javascript library documentation](https://github.com/nolanlawson/emoji-picker-element/?tab=readme-ov-file#internationalization).
+For further information please refer to the [underlying javascript library documentation](https://github.com/nolanlawson/emoji-picker-element/?tab=readme-ov-file#internationalization).
 
 ## Theming
 
@@ -179,13 +182,13 @@ Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
+Please review [our security policy](https://github.com/TangoDev-it/filament-emoji-picker/security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
 - [emoji-picker-element](https://github.com/nolanlawson/emoji-picker-element)
 - [TangoDev](https://github.com/TangoDev-it)
-- [All Contributors](../../contributors)
+- [All Contributors](https://github.com/TangoDev-it/filament-emoji-picker/graphs/contributors)
 
 ## License
 
